@@ -150,6 +150,32 @@ code {
   -webkit-user-drag: none;
 }
 
+.gameover-screen {
+  background: #f4ede3;
+}
+
+.gameover-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.gameover-score {
+  position: absolute;
+  top: 5%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 1.2rem;
+  color: #2c2420;
+  text-shadow: 0 1px 0 rgba(247, 242, 233, 0.9), 0 2px 8px rgba(44, 36, 32, 0.12);
+  pointer-events: none;
+  padding: 0 1rem;
+}
+
 .fps-panel {
   position: absolute;
   top: 12px;

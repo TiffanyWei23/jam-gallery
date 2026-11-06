@@ -1,5 +1,6 @@
 const sounds = {
   jump: new Audio('./assets/audio/jump.wav'),
+  meow: new Audio('./assets/audio/meow.wav'),
   break: new Audio('./assets/audio/break.wav'),
   splash: new Audio('./assets/audio/splash.wav'),
 };

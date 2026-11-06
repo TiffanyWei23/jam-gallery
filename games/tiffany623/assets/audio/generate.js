@@ -94,7 +94,29 @@ function makeSplash(duration = 0.55) {
   return samples;
 }
 
+// Short cute cat meow: rising-falling pitch with a little harmonic body.
+function makeMeow(duration = 0.48) {
+  const n = Math.floor(SAMPLE_RATE * duration);
+  const samples = new Float32Array(n);
+  for (let i = 0; i < n; i++) {
+    const t = i / SAMPLE_RATE;
+    const p = t / duration;
+    // Pitch rises then falls like "mee-ow".
+    const f = p < 0.35
+      ? 420 + (820 - 420) * (p / 0.35)
+      : 820 + (320 - 820) * ((p - 0.35) / 0.65);
+    const vibrato = 1 + 0.03 * Math.sin(2 * Math.PI * 12 * t);
+    const phase = 2 * Math.PI * f * t * vibrato;
+    const env = envelope(t, duration, 0.04, 0.18, 0.55, 0.18);
+    const fundamental = 0.35 * Math.sin(phase) * env;
+    const second = 0.12 * Math.sin(2 * phase) * env;
+    samples[i] = fundamental + second;
+  }
+  return samples;
+}
+
 const outDir = __dirname;
 writeWav(path.join(outDir, 'jump.wav'), makeJump());
 writeWav(path.join(outDir, 'break.wav'), makeBreak());
 writeWav(path.join(outDir, 'splash.wav'), makeSplash());
+writeWav(path.join(outDir, 'meow.wav'), makeMeow());

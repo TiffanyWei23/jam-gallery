@@ -20,10 +20,17 @@
       "source": "original",
       "license": "original",
       "note": "Title screen artwork created by the maker"
+    },
+    {
+      "file": "assets/game-over-screen.png",
+      "source": "original",
+      "license": "original",
+      "note": "Game over screen artwork created by the maker"
     }
   ],
   "ai_assets": [
     "assets/audio/jump.wav",
+    "assets/audio/meow.wav",
     "assets/audio/break.wav",
     "assets/audio/splash.wav"
   ]

@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import * as T from './tuning.js';
-import { Player } from './player.js';
+import { Player, STATES } from './player.js';
 import { World } from './world.js';
 import { UI } from './ui.js';
 import { play } from './audio.js';
@@ -103,8 +103,10 @@ window.addEventListener('keydown', (e) => {
 
 window.addEventListener('keyup', (e) => {
   if (e.code === 'Space' && gameState === 'PLAY') {
+    const wasAiming = player.state === STATES.AIMING;
     player.releaseAim();
     play('jump');
+    if (wasAiming) play('meow');
   }
 });
 
@@ -121,8 +123,10 @@ window.addEventListener('touchstart', (e) => {
 window.addEventListener('touchend', (e) => {
   e.preventDefault();
   if (gameState === 'PLAY' && player) {
+    const wasAiming = player.state === STATES.AIMING;
     player.releaseAim();
     play('jump');
+    if (wasAiming) play('meow');
   }
 });
 
